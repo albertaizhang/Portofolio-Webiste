@@ -14,7 +14,8 @@ const PROFILE = {
   title: "Software Engineer II",
   location: "Salt Lake City, UT",
   summary:
-    "Backend-focused SWE shipping high-traffic microservices (4k rps) for products serving 10M+ users. Comfortable across GraphQL, Kafka (consumers/producers/KStreams), and modern cloud infra. Mentor and doc-first collaborator.",
+    "Software Engineer II with a track record of shipping high-scale backend systems powering millions of users. Comfortable across microservices, APIs, and event-streaming platforms (GraphQL, Kafka, AWS)"
+    + "I thrive in fast-moving teams, balancing technical depth with collaboration such as mentoring peers, writing clear documentation, and delivering features that directly drive business impact.",
   email: "albert.zhang8@gmail.com",
   // Root-relative for Vercel (served from /public)
   // Tip: hyphens are nicer, but spaces work if the file in /public matches exactly.
@@ -22,7 +23,7 @@ const PROFILE = {
 };
 
 const LINKS = {
-  github: "https://github.com/albert.ai.zhang",
+  github: "https://github.com/albertaizhang",
   linkedin: "https://www.linkedin.com/in/albertzhang1",
   email: `mailto:${PROFILE.email}`,
 };
@@ -57,6 +58,12 @@ const PROJECTS: Project[] = [
     highlights: ["Strategy sandbox", "Backtesting flows", "Abstractions for multiple algos"],
     // Root-relative path for Vercel. Put your file at /public/videos/autostock-final-video.mp4
     video: "/videos/autostockvideo.mp4",
+  },
+  {
+    title: "Fitness Tracker App ",
+    description: "Our fitness tracking app is designed to help you take control of your health and reach your goals with ease. With fitness tracking, personalized workout recommendations, and seamless integration with lifestyle ",
+    tech: ["Kotlin", "Android Studio", "SQL Lite", "Java"],
+    highlights: ["App Development", "Comprehensive Activity Tracking", "BMI Calculator"],
   },
 ];
 
