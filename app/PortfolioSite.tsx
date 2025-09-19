@@ -16,7 +16,8 @@ const PROFILE = {
   summary:
     "Backend-focused SWE shipping high-traffic microservices (4k rps) for products serving 10M+ users. Comfortable across GraphQL, Kafka (consumers/producers/KStreams), and modern cloud infra. Mentor and doc-first collaborator.",
   email: "albert.zhang8@gmail.com",
-  // Tip: filenames with spaces work, but hyphens are nicer: /Albert-Zhang-Res.pdf
+  // Root-relative for Vercel (served from /public)
+  // Tip: hyphens are nicer, but spaces work if the file in /public matches exactly.
   resumeUrl: "/Albert Zhang Res.pdf",
 };
 
@@ -32,7 +33,7 @@ export type Project = {
   tech: string[];
   href?: string;
   highlights?: string[];
-  video?: string; // <— optional video path in /public
+  video?: string; // optional video path under /public
 };
 
 const PROJECTS: Project[] = [
@@ -54,7 +55,8 @@ const PROJECTS: Project[] = [
     description: "Web platform for creating, learning, and testing automated stock trading strategies.",
     tech: ["React", "GraphQL", "Flask", "Google Cloud"],
     highlights: ["Strategy sandbox", "Backtesting flows", "Abstractions for multiple algos"],
-    video: "/autostockvideo.mp4", // <— put your file in /public with this name (or change the path)
+    // Root-relative path for Vercel. Put your file at /public/videos/autostock-final-video.mp4
+    video: "/videos/autostock-final-video.mp4",
   },
 ];
 
@@ -256,7 +258,7 @@ function ProjectCard({ p }: { p: Project }) {
 
         {/* Optional project video */}
         {p.video && (
-          <video controls className="mb-4 w-full rounded-xl border shadow-sm">
+          <video controls className="mb-4 w-full rounded-xl border shadow-sm" preload="metadata" playsInline>
             <source src={p.video} type="video/mp4" />
             Your browser does not support the video tag.
           </video>
