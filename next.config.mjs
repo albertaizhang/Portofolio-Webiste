@@ -1,7 +1,8 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  output: 'export',   // needed for GitHub Pages static hosting
   reactStrictMode: true,
+  // IMPORTANT: Remove basePath/assetPrefix and `output: 'export'` for Vercel
+  // (Vercel handles Next.js SSR/ISR automatically)
 };
 
 export default nextConfig;
