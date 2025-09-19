@@ -56,7 +56,7 @@ const PROJECTS: Project[] = [
     tech: ["React", "GraphQL", "Flask", "Google Cloud"],
     highlights: ["Strategy sandbox", "Backtesting flows", "Abstractions for multiple algos"],
     // Root-relative path for Vercel. Put your file at /public/videos/autostock-final-video.mp4
-    video: "/videos/autostock-final-video.mp4",
+    video: "/videos/autostockvideo.mp4",
   },
 ];
 
