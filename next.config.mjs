@@ -1,6 +1,7 @@
-// next.config.mjs
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  output: 'export', // enables static export to /out
+  output: 'export',   // needed for GitHub Pages static hosting
+  reactStrictMode: true,
 };
+
 export default nextConfig;

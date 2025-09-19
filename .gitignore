@@ -39,3 +39,10 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+
+# Add 'nul' to .gitignore
+echo nul>> .gitignore
+
+# Stage the ignore file right away
+git add .gitignore
