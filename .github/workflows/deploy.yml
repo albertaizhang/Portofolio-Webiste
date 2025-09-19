@@ -2,7 +2,7 @@ name: Deploy to GitHub Pages
 
 on:
   push:
-    branches: [main]
+    branches: [ main ]
   workflow_dispatch:
 
 permissions:
@@ -14,20 +14,46 @@ concurrency:
   group: "pages"
   cancel-in-progress: false
 
+env:
+  # 👉 For a project repo, set this to your repo name, e.g. "portfolio"
+  # 👉 For a user repo (<username>.github.io), set this to "" (empty string)
+  REPO_NAME: "REPO_NAME_HERE"
+
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
         with:
           node-version: '20'
           cache: 'npm'
-      - run: npm ci
-      - run: npm run build
-      # Next.js (with output:'export') writes to ./out
-      - uses: actions/upload-pages-artifact@v3
+
+      - name: Install deps
+        run: npm ci
+
+      - name: Build static site (Next.js export)
+        shell: bash
+        run: |
+          # Compute base path for project repos
+          if [ -n "${REPO_NAME}" ]; then
+            export NEXT_PUBLIC_BASE_PATH="/${REPO_NAME}"
+          else
+            export NEXT_PUBLIC_BASE_PATH=""
+          fi
+
+          echo "Using NEXT_PUBLIC_BASE_PATH='${NEXT_PUBLIC_BASE_PATH}'"
+
+          # Build your Next.js site; next.config.(js|mjs) should have: output: 'export'
+          npm run build
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
         with:
+          # Next.js static export output directory
           path: ./out
 
   deploy:
